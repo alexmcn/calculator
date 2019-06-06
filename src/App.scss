@@ -34,6 +34,14 @@
 .pad {
   display: flex;
   flex-wrap: wrap;
+
+  button {
+    border: 0;
+    border-radius: 0;
+    margin-top: 1px;
+    font-size: 1em;
+    line-height: 3;
+  }
 }
 
 .numberKeys {
@@ -44,16 +52,24 @@
 
   button {
     width: 33%;
-    border: 0;
-    border-radius: 0;
     background-color: #373d45;
     color: white;
-    margin-top: 1px;
-    font-size: 1em;
-    line-height: 3;
+
+    &.clear {
+      width: 100%;
+      background-color: darkorange;
+      color: #373d45;
+    }
   }
 }
 
 .operatorKeys {
-  width: 70px;
+  width: 69px;
+  margin-left: 1px;
+
+  button {
+    width: 100%;
+    background-color: orange;
+    color: #373d45;
+  }
 }

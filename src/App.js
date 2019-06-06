@@ -17,6 +17,7 @@ const App = () => {
 
         <div className="pad">
           <div className="numberKeys">
+            <button className="clear">Clear</button>
             {numberPadOrder.map((order, index) => (
               <button key={index} style={{ order }}>
                 {index}
@@ -24,7 +25,13 @@ const App = () => {
             ))}
             <button style={{ order: 11 }}>.</button>
           </div>
-          <div className="operatorKeys">/ x - =</div>
+          <div className="operatorKeys">
+            <button>&#247;</button>
+            <button>x</button>
+            <button>-</button>
+            <button>+</button>
+            <button>=</button>
+          </div>
         </div>
       </article>
     </div>
