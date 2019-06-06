@@ -35,3 +35,15 @@ it('performs an operation on 2 numbers and displays the result when the equals b
   wrapper.find('[data-test="="]').simulate('click');
   expect(wrapper.find('[data-test="display"]').text()).toBe('3.6');
 });
+
+it('clears the screen if the C button is clicked', () => {
+  const wrapper = shallow(<App />);
+
+  wrapper.find('[data-test="number-1"]').simulate('click');
+  wrapper.find('[data-test="."]').simulate('click');
+  wrapper.find('[data-test="number-3"]').simulate('click');
+  expect(wrapper.find('[data-test="display"]').text()).toBe('1.3');
+
+  wrapper.find('[data-test="clear"]').simulate('click');
+  expect(wrapper.find('[data-test="display"]').text()).toBe('0');
+});

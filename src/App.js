@@ -49,6 +49,13 @@ const App = () => {
     );
   };
 
+  const handleClearClick = () => {
+    setCurrentValue('0');
+    setFirstValue(0);
+    setOperand(null);
+    setDisplay('0');
+  };
+
   return (
     <div className="App">
       <article className="calculator">
@@ -65,7 +72,13 @@ const App = () => {
 
         <div className="pad">
           <div className="numberKeys">
-            <button className="clear">Clear</button>
+            <button
+              className="clear"
+              data-test="clear"
+              onClick={() => handleClearClick()}
+            >
+              Clear
+            </button>
             {numberPadOrder.map((order, index) => (
               <button
                 key={index}
