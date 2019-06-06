@@ -23,3 +23,15 @@ it('displays decimal points correctly ', () => {
 
   expect(wrapper.find('[data-test="display"]').text()).toBe('0.23');
 });
+
+it('performs an operation on 2 numbers and displays the result when the equals button is clicked', () => {
+  const wrapper = shallow(<App />);
+
+  wrapper.find('[data-test="number-1"]').simulate('click');
+  wrapper.find('[data-test="."]').simulate('click');
+  wrapper.find('[data-test="number-2"]').simulate('click');
+  wrapper.find('[data-test="x"]').simulate('click');
+  wrapper.find('[data-test="number-3"]').simulate('click');
+  wrapper.find('[data-test="="]').simulate('click');
+  expect(wrapper.find('[data-test="display"]').text()).toBe('3.6');
+});

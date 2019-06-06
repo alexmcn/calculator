@@ -4,22 +4,49 @@ import './App.scss';
 const App = () => {
   const numberPadOrder = [10, 7, 8, 9, 4, 5, 6, 1, 2, 3];
   const [display, setDisplay] = useState('0');
+  const [firstValue, setFirstValue] = useState(0);
+  const [currentValue, setCurrentValue] = useState('0');
+  const [operand, setOperand] = useState(null);
 
   const handleNumberClick = value => {
-    if (display === '0') {
-      setDisplay(value.toString());
-    } else {
-      setDisplay(`${display}${value.toString()}`);
-    }
+    const newValue =
+      currentValue === '0' ? value.toString() : `${display}${value.toString()}`;
+    setCurrentValue(newValue);
+    setDisplay(newValue);
   };
 
   const handlePointClick = () => {
-    if (display.indexOf('.') > 0) return;
-    if (display === '0') {
-      setDisplay('0.');
-    } else {
-      setDisplay(`${display}.`);
-    }
+    if (currentValue.indexOf('.') > 0) return;
+    const newValue = currentValue === '0' ? '0.' : `${display}.`;
+    setCurrentValue(newValue);
+    setDisplay(newValue);
+  };
+
+  const handleOperandClick = operation => {
+    setCurrentValue('0');
+    setFirstValue(Number(currentValue));
+    setOperand(operation);
+  };
+
+  const handleEqualsClick = () => {
+    const secondValue = Number(currentValue);
+    let result;
+
+    if (operand === '/') result = firstValue / secondValue;
+    if (operand === 'x') result = firstValue * secondValue;
+    if (operand === '+') result = firstValue + secondValue;
+    if (operand === '-') result = firstValue - secondValue;
+
+    setCurrentValue(result.toString());
+    setFirstValue(result);
+    setOperand(null);
+
+    setDisplay(
+      result
+        .toFixed(7)
+        .replace(/0+$/, '')
+        .replace(/.$/, '')
+    );
   };
 
   return (
@@ -58,11 +85,21 @@ const App = () => {
             </button>
           </div>
           <div className="operatorKeys">
-            <button>&#247;</button>
-            <button>x</button>
-            <button>-</button>
-            <button>+</button>
-            <button>=</button>
+            <button onClick={() => handleOperandClick('/')} data-test="/">
+              &#247;
+            </button>
+            <button onClick={() => handleOperandClick('x')} data-test="x">
+              x
+            </button>
+            <button onClick={() => handleOperandClick('-')} data-test="-">
+              -
+            </button>
+            <button onClick={() => handleOperandClick('+')} data-test="+">
+              +
+            </button>
+            <button onClick={() => handleEqualsClick()} data-test="=">
+              =
+            </button>
           </div>
         </div>
       </article>
