@@ -13,6 +13,15 @@ const App = () => {
     }
   };
 
+  const handlePointClick = () => {
+    if (display.indexOf('.') > 0) return;
+    if (display === '0') {
+      setDisplay('0.');
+    } else {
+      setDisplay(`${display}.`);
+    }
+  };
+
   return (
     <div className="App">
       <article className="calculator">
@@ -40,7 +49,13 @@ const App = () => {
                 {index}
               </button>
             ))}
-            <button style={{ order: 11 }}>.</button>
+            <button
+              style={{ order: 11 }}
+              onClick={() => handlePointClick()}
+              data-test="."
+            >
+              .
+            </button>
           </div>
           <div className="operatorKeys">
             <button>&#247;</button>
