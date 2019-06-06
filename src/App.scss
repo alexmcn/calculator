@@ -1,11 +1,6 @@
-.App {
-  text-align: center;
-}
-
 .calculator {
   width: 300px;
   height: 400px;
-  padding: 10px;
   background-color: #cef;
   border: 1px solid #1795d4;
   border-radius: 10px;
@@ -18,10 +13,21 @@
   background-color: white;
   border: 1px solid #1795d4;
   border-radius: 6px;
+  margin: 10px;
   text-align: right;
   font-family: 'Courier New', Courier, monospace;
   font-size: 2em;
   font-weight: bold;
   line-height: 1.5;
   white-space: nowrap;
+}
+
+.brand {
+  padding: 15px;
+  background-color: #1795d4;
+  margin-bottom: 10px;
+  img {
+    width: 50%;
+    height: auto;
+  }
 }
