@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 
 const App = () => {
   const numberPadOrder = [10, 7, 8, 9, 4, 5, 6, 1, 2, 3];
+  const [display, setDisplay] = useState('0');
+
+  const handleNumberClick = value => {
+    if (display === '0') {
+      setDisplay(value.toString());
+    } else {
+      setDisplay(`${display}${value.toString()}`);
+    }
+  };
 
   return (
     <div className="App">
       <article className="calculator">
-        <div className="screen">1234</div>
+        <div className="screen" data-test="display">
+          {display}
+        </div>
+
         <div className="brand">
           <img
             alt="Equal Experts"
@@ -19,7 +31,12 @@ const App = () => {
           <div className="numberKeys">
             <button className="clear">Clear</button>
             {numberPadOrder.map((order, index) => (
-              <button key={index} style={{ order }}>
+              <button
+                key={index}
+                style={{ order }}
+                onClick={() => handleNumberClick(index)}
+                data-test={`number-${index}`}
+              >
                 {index}
               </button>
             ))}
