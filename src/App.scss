@@ -1,11 +1,11 @@
 .calculator {
-  width: 300px;
-  height: 400px;
+  width: 280px;
   background-color: #cef;
   border: 1px solid #1795d4;
   border-radius: 10px;
   box-shadow: 5px 10px 10px -10px rgba(0, 0, 0, 0.5);
   margin: 20px auto;
+  overflow: hidden;
 }
 
 .screen {
@@ -25,9 +25,35 @@
 .brand {
   padding: 15px;
   background-color: #1795d4;
-  margin-bottom: 10px;
   img {
     width: 50%;
     height: auto;
   }
+}
+
+.pad {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.numberKeys {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 210px;
+
+  button {
+    width: 33%;
+    border: 0;
+    border-radius: 0;
+    background-color: #373d45;
+    color: white;
+    margin-top: 1px;
+    font-size: 1em;
+    line-height: 3;
+  }
+}
+
+.operatorKeys {
+  width: 70px;
 }
