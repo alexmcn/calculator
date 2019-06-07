@@ -41,12 +41,7 @@ const App = () => {
     setFirstValue(result);
     setOperand(null);
 
-    setDisplay(
-      result
-        .toFixed(7)
-        .replace(/0+$/, '')
-        .replace(/.$/, '')
-    );
+    setDisplay(parseFloat(result.toFixed(8)));
   };
 
   const handleClearClick = () => {
